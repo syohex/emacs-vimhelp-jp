@@ -25,6 +25,7 @@
 ;;; Code:
 
 (require 'cl-lib)
+(require 'button)
 (require 'json)
 (require 'request-deferred)
 
@@ -63,7 +64,12 @@
           (with-current-buffer (get-buffer-create vimhelp-jp--buffer)
             (setq buffer-read-only nil)
             (erase-buffer)
-            (insert (concat "URL: " (assoc-default 'vimdoc_url data) "\n\n"))
+            (insert "URL: ")
+            (let ((url (assoc-default 'vimdoc_url data)))
+              (insert-button url
+                             'action (lambda (x) (browse-url (button-get x 'url)))
+                             'url url))
+            (insert "\n\n")
             (insert (assoc-default 'text data))
             (setq buffer-read-only t)
             (goto-char (point-min))
