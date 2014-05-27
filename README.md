@@ -10,6 +10,10 @@
 
 ![vimhelp-jp2](image/vimhelp-jp2.png)
 
+### With helm-mode
+
+![vimhelp-jp3](image/vimhelp-jp3.png)
+
 
 ## Requirements
 
