@@ -4,6 +4,8 @@
 
 (package "vimhelp-jp" "0" "vimhelp-jp utility")
 
+(depends-on "request-deferred")
+
 (development
  (depends-on "ert")
- (depends-on "request-deferred"))
+ (depends-on "helm"))
