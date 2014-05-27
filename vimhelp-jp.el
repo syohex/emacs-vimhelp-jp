@@ -46,7 +46,8 @@
 (defun vimhelp-jp--query ()
   (unless vimhelp-jp--tags
     (vimhelp-jp--collect-tags))
-  (completing-read ":help " vimhelp-jp--tags nil t nil 'vimhelp-jp--history))
+  (let ((read-func (if ido-mode 'ido-completing-read 'completing-read)))
+    (funcall read-func ":help " vimhelp-jp--tags nil t nil 'vimhelp-jp--history)))
 
 ;;;###autoload
 (defun vimhelp-jp (query)
